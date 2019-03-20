@@ -1,25 +1,26 @@
 {
-  "name": "onboard-react-client",
+  "name": "with-create-react-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "react-scripts": "2.1.8"
+    "react-md": "^1.9.3",
+    "webfontloader": "^1.6.28"
+  },
+  "devDependencies": {
+    "fsevents": "^1.2.7",
+    "node-sass-chokidar": "^0.0.3",
+    "npm-run-all": "^4.1.2",
+    "react-scripts": "1.0.17"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "build-css": "node-sass-chokidar --include-path ./node_modules src/ -o src/",
+    "watch-css": "npm run build-css && npm run build-css -- --watch --recursive",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build": "npm run build-css && react-scripts build",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  }
 }

@@ -1,0 +1,15 @@
+@import 'globals';
+
+@include react-md-everything;
+
+body {
+  margin: 0;
+}
+
+.md-drawer {
+  background: $md-pink-500
+}
+
+.md-list--drawer {
+  background: $md-blue-500
+}
