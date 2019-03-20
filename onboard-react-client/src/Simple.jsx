@@ -3,16 +3,15 @@ import React, { PureComponent } from 'react';
 import { Button, NavigationDrawer, SVGIcon } from 'react-md';
 import { ReactComponent as MenuIcon } from './react-md-src/icons/menu.svg';
 import arrowBack from './react-md-src/icons/arrow_back.svg';
-import inboxListItems from './react-md-src/constants/inboxListItems';
 import { FontIcon } from 'react-md';
 
 const loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 export default class Simple extends PureComponent {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     // Update the items so they have an onClick handler to change the current page
-    this.navItems = inboxListItems.map((item) => {
+    this.navItems = props.inboxListItems.map((item) => {
       if (item.divider) {
         return item;
       }
@@ -26,8 +25,8 @@ export default class Simple extends PureComponent {
     this.state = {
       renderNode: null,
       visible: false,
-      key: inboxListItems[0].key,
-      page: inboxListItems[0].primaryText,
+      key: props.inboxListItems[0].key,
+      page: props.inboxListItems[0].primaryText,
     };
   }
 

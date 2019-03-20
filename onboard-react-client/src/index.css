@@ -3653,4 +3653,11 @@ body {
   color: aliceblue; }
 
 .md-tile-text--primary.md-text {
-  color: aliceblue; }
+  color: aliceblue;
+  text-align: left; }
+
+.md-text--theme-primary {
+  text-align: left; }
+
+.md-tile-content--left-icon {
+  padding-left: 12px; }
