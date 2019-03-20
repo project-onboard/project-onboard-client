@@ -7,9 +7,17 @@ body {
 }
 
 .md-drawer {
-  background: $md-pink-500
+  background: $md-blue-grey-900
 }
 
 .md-list--drawer {
-  background: $md-blue-500
+  background: #3b4051
+}
+
+.md-icon {
+  color:  aliceblue;
+}
+
+.md-tile-text--primary.md-text {
+  color: aliceblue;
 }

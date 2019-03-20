@@ -81,7 +81,9 @@ export default class Simple extends PureComponent {
             toolbarActions={<Button icon onClick={this.hide}>close</Button>}
             contentId="main-demo-content"
             temporaryIcon={<FontIcon>menu</FontIcon>}
-            persistentIcon={<SVGIcon use={arrowBack.url} />}
+            persistentIcon={<FontIcon style={{
+              color: '#ffffff', 
+            }}>arrow_back_ios</FontIcon>}
             contentClassName="md-grid"
             drawerClassName="md-drawer"
           >

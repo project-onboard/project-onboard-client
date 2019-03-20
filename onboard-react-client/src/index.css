@@ -1076,7 +1076,7 @@ a.md-btn {
   background: rgba(153, 153, 153, 0.12); }
 
 .md-btn--color-primary-active {
-  background: rgba(0, 150, 136, 0.12); }
+  background: rgba(255, 196, 0, 0.12); }
 
 .md-btn--color-secondary-active {
   background: rgba(213, 0, 249, 0.12); }
@@ -2264,7 +2264,7 @@ svg.md-icon {
   padding: 0; }
 
 .md-picker-header {
-  background: #009688;
+  background: #ffc400;
   padding: 24px; }
 
 @media (orientation: portrait) {
@@ -2378,7 +2378,7 @@ svg.md-icon {
     font-weight: 500; }
 
 .md-calendar-date--btn::after {
-  background: #009688;
+  background: #ffc400;
   border-radius: 50%;
   content: '';
   display: block;
@@ -2432,7 +2432,7 @@ svg.md-icon {
   .md-clock-hand--active {
     transition-property: transform, width; }
   .md-clock-hand::before, .md-clock-hand::after {
-    background: #009688;
+    background: #ffc400;
     border-radius: 50%;
     content: '';
     position: absolute; }
@@ -2707,7 +2707,7 @@ svg.md-icon {
   position: relative; }
 
 .md-slider-track-fill {
-  background: #009688;
+  background: #ffc400;
   border: 0;
   height: 2px;
   left: 0;
@@ -2735,7 +2735,7 @@ svg.md-icon {
     outline-style: none; }
 
 .md-slider-thumb--on {
-  background: #009688; }
+  background: #ffc400; }
 
 .md-slider-thumb--active {
   transform: scale(1.5);
@@ -2758,7 +2758,7 @@ svg.md-icon {
   transform: scale(1); }
 
 .md-slider-thumb--mask-inked {
-  background: rgba(0, 150, 136, 0.15);
+  background: rgba(255, 196, 0, 0.15);
   transform: scale(3.5);
   z-index: 4; }
 
@@ -2788,7 +2788,7 @@ svg.md-icon {
   transform: scale(2) translate3d(0, -18px, 0); }
 
 .md-slider-thumb--discrete-on::after {
-  border-top-color: #009688; }
+  border-top-color: #ffc400; }
 
 .md-slider-thumb--discrete-off {
   background: #000; }
@@ -2803,7 +2803,7 @@ svg.md-icon {
   transition-duration: 0.3s; }
 
 .md-slider-thumb--discrete-mask-leaving {
-  background: rgba(0, 150, 136, 0.3);
+  background: rgba(255, 196, 0, 0.3);
   transition-duration: 0.3s;
   z-index: 4; }
 
@@ -3172,7 +3172,7 @@ svg.md-icon {
   margin-top: 7px;
   overflow: visible; }
   .md-divider--text-field::after {
-    background: #009688;
+    background: #ffc400;
     content: '';
     display: block;
     height: 2px;
@@ -3609,7 +3609,7 @@ svg.md-icon {
   .md-text--disabled {
     color: rgba(0, 0, 0, 0.38); }
   .md-text--theme-primary {
-    color: #009688; }
+    color: #ffc400; }
   .md-text--theme-secondary {
     color: #d500f9; }
   .md-text--error {
@@ -3618,7 +3618,7 @@ svg.md-icon {
     color: inherit; }
 
 .md-ink--primary .md-ink {
-  background: rgba(0, 150, 136, 0.26); }
+  background: rgba(255, 196, 0, 0.26); }
 
 .md-ink--secondary .md-ink {
   background: rgba(213, 0, 249, 0.26); }
@@ -3628,7 +3628,7 @@ svg.md-icon {
   .md-background--card {
     background: #fff; }
   .md-background--primary {
-    background: #009688;
+    background: #ffc400;
     color: #fff; }
   .md-background--secondary {
     background: #d500f9;
@@ -3636,7 +3636,7 @@ svg.md-icon {
 
 @media screen and (min-width: 1025px) {
   .md-background--primary-hover:hover {
-    background: rgba(0, 150, 136, 0.9); }
+    background: rgba(255, 196, 0, 0.9); }
   .md-background--secondary-hover:hover {
     background: rgba(213, 0, 249, 0.9); } }
 
@@ -3644,7 +3644,13 @@ body {
   margin: 0; }
 
 .md-drawer {
-  background: #e91e63; }
+  background: #263238; }
 
 .md-list--drawer {
-  background: #2196f3; }
+  background: #3b4051; }
+
+.md-icon {
+  color: aliceblue; }
+
+.md-tile-text--primary.md-text {
+  color: aliceblue; }
