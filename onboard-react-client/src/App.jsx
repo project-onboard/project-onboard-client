@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { NavigationDrawer, Button, FontIcon } from 'react-md';
-import logo from './logo.svg';
 import './App.css';
 import Simple from './Simple'
 
