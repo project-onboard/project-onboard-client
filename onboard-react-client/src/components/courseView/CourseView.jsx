@@ -10,7 +10,7 @@ import CourseManager from "./../../managers/courseManager"
 export default class CourseView extends PureComponent {
   constructor({match}) {
     super();
-    // Update the items so they have an onClick handler to change the current page
+
     this.state = {
       isEditing: false,
       renderNode: null,
@@ -97,8 +97,7 @@ export default class CourseView extends PureComponent {
           };
         });
 
-        const allModules =  [moduleHeader, ...sections];
-        return allModules
+        return [moduleHeader, ...sections];
       }
     ).flat();
 
