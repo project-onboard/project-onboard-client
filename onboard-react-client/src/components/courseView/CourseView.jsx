@@ -121,28 +121,41 @@ export default class CourseView extends PureComponent {
     ).flat();
 
     const navItems = courseViewModels.map((item) => {
-
-      return {
-        ...item,
-        rightIcon: this.rightIconForKey(item, hoverKey),
-        active: item.key === activeKey,
-        onClick: () =>
-          this.setState({
-            activeKey: item.key,
-            hoverKey: this.state.hoverKey,
-            page: item.primaryText,
-            renderNode: this.state.renderNode,
-            modules: this.state.modules
-          }),
-        onMouseOver: () =>
-          this.setState({
-            activeKey: this.state.activeKey,
-            hoverKey: item.key,
-            page: item.primaryText,
-            renderNode: this.state.renderNode,
-            modules: this.state.modules
-          })
-      };
+        if (item.key.includes("section")) {
+            return {
+                ...item,
+                rightIcon: this.rightIconForKey(item, hoverKey),
+                active: item.key === activeKey,
+                onClick: () =>
+                    this.setState({
+                        activeKey: item.key,
+                        hoverKey: this.state.hoverKey,
+                        page: item.primaryText,
+                        renderNode: this.state.renderNode,
+                        modules: this.state.modules
+                    }),
+                onMouseOver: () =>
+                    this.setState({
+                        activeKey: this.state.activeKey,
+                        hoverKey: item.key,
+                        renderNode: this.state.renderNode,
+                        modules: this.state.modules
+                    })
+            };
+        } else {
+            return {
+                ...item,
+                rightIcon: this.rightIconForKey(item, hoverKey),
+                active: item.key === activeKey,
+                onMouseOver: () =>
+                    this.setState({
+                        activeKey: this.state.activeKey,
+                        hoverKey: item.key,
+                        renderNode: this.state.renderNode,
+                        modules: this.state.modules
+                    })
+            };
+        }
     });
 
     return (

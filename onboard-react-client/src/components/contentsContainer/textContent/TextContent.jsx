@@ -29,7 +29,7 @@ export default class TextContent extends PureComponent {
   };
 
     render() {
-    const {  max, text } = this.state;
+    const {  max, text, title } = this.state;
     if(this.props.isEditing) {
         return (
             <div className="md-grid">
@@ -39,6 +39,7 @@ export default class TextContent extends PureComponent {
                         placeholder="Title"
                         onChange={this.handleTitleChange}
                         resize={{ max }}
+                        value = {title}
                     />
                 </div>
                 <div className="md-cell md-cell--12">
