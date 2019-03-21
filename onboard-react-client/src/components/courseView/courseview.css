@@ -1,3 +1,12 @@
 .left-menu-add-button {
     margin-top: -25%;
 }
+
+.course-section-container {
+    width: 800px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+  

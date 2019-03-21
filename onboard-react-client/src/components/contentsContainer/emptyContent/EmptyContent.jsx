@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { TextField } from 'react-md';
 import { FontIcon, Button, Paper, NavigationDrawer, SVGIcon} from 'react-md';
+import "./emptycontent.css"
 
 export default class EmptyContent extends PureComponent {
   state = {
@@ -27,11 +28,11 @@ export default class EmptyContent extends PureComponent {
   render() {
     const { value, max } = this.state;
     return (
-      <div>
+      <div className='empty-content-container'>
             <Button floating secondary>text_format</Button>
             <Button floating secondary>insert_photo</Button>
-            <Button floating secondary> video_library </Button>
-            <Button floating secondary> assignment </Button>
+            <Button floating secondary>video_library</Button>
+            <Button floating secondary>assignment</Button>
       </div>
     );
   }

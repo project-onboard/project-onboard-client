@@ -106,7 +106,9 @@ export default class CourseView extends PureComponent {
           }
         >
 
-          <ContentsContainer page={page} />
+          <div className="course-section-container">
+            <ContentsContainer page={page} />
+          </div>
 
         </NavigationDrawer>
 

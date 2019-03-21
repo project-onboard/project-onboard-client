@@ -1,0 +1,13 @@
+.main-contents-header {
+    margin: 0px 0px 40px 0px;
+    text-align: left;
+}
+
+/* Fonts */
+.main-contents-header {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+    font-size: 30px;
+}
