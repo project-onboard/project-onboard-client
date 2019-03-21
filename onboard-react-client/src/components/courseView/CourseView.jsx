@@ -61,7 +61,7 @@ export default class CourseView extends PureComponent {
       return {
         ...item,
         rightIcon: rightIcon,
-        active: item.key == activeKey,
+        active: item.key === activeKey,
         onClick: () =>
           this.setState({
             activeKey: item.key,
