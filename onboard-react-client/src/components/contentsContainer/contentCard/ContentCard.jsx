@@ -7,11 +7,13 @@ import "./contentcard.css"
 
 export default class ContentCard extends PureComponent {
     render() {
+
         return (
             <Paper key={0} zDepth={0} raiseOnHover={this.props.isEditing}>
+                {this.props.isEditing? (
                 <Button className='delete-content-button' icon onClick={() => {
                     this.props.deleteContent(this.props.index);
-                }}>delete</Button>
+                }}>delete</Button>) : null}
                 {this.props.type == "empty" ? <EmptyContent
                     isEditing={this.props.isEditing}
                     index={this.props.index}
