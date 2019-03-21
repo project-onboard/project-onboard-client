@@ -3,43 +3,55 @@ import { TextField } from 'react-md';
 import { FontIcon, Button, Paper, NavigationDrawer, SVGIcon} from 'react-md';
 import EmptyContent from './emptyContent/EmptyContent';
 import "./contentscontainer.css"
+import TextContent from "./textContent/TextContent";
+import ContentCard from "./contentCard/ContentCard";
 
 export default class ContentsContainer extends PureComponent {
   state = {
     value: 'This is some default text to place',
     max: 340,
+    count: 0,
+    contents: [],
   };
 
-  setDiv = (div) => {
-    this.div = div;
-    this.setMaxWidth();
+  addNewCard = () => {
+      const newContent = {index: this.state.count, type: "empty"}
+      this.setState((prevState, props) => ({
+          count: prevState.count + 1,
+          contents: [...prevState.contents, newContent]
+      }));
   };
 
-  setMaxWidth = () => {
-    // Make sure mobile devices don't overflow
-    if (this.div) {
-      this.setState({ max: Math.min(340, this.div.offsetWidth) });
-    }
+  setCardType = (newIndex, newType) => {
+      const newContent = {index:newIndex, type:newType};
+      this.setState(state => {
+          const contents = state.contents.map(item => {
+              if(item.index == newIndex) {
+                  item.type = newType;
+              }
+              return item;
+          });
+          return {
+              contents:contents
+          };
+      });
+      console.log(this.state.contents);
   };
 
-  handleChange = (value) => {
-    this.setState({ value });
-  };
+
 
   render() {
-    const { value, max } = this.state;
+    const cards =  this.state.contents.map((card) => {
+        return (<ContentCard type = {card.type} index={card.index} setCardType={this.setCardType}/>)
+     });
+
     return (
       <div>
             <h2 className="main-contents-header">Currently on page: {this.props.page}</h2>
-            <Button floating tooltipLabel="add contents" tooltipPosition="top">add</Button>
+            <Button floating tooltipLabel="add contents" tooltipPosition="top"
+                    onClick={this.addNewCard}>add</Button>
             <div>
-                <Paper
-                  key={0}
-                  zDepth={0}
-                  raiseOnHover={true}
-                >
-                <EmptyContent/>     
-                </Paper>
+                {cards}
             </div>
       </div>
     );
