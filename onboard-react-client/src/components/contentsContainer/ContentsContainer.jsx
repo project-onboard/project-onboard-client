@@ -23,7 +23,6 @@ export default class ContentsContainer extends PureComponent {
     };
 
     setCardType = (newIndex, newType) => {
-        const newContent = {index: newIndex, type: newType};
         this.setState(state => {
             const contents = state.contents.map(item => {
                 if (item.index == newIndex) {

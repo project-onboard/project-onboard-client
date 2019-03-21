@@ -109,6 +109,21 @@ class CourseManager {
         })
     }
 
+    saveSectionContents(moduleIndex, sectionIndex, contents){
+        this.modules[moduleIndex].sections[sectionIndex].contents = contents;
+        fetch('http://ec2-35-183-119-218.ca-central-1.compute.amazonaws.com:3000/course/123', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                title: this.title,
+                modules: this.modules,
+            })
+        })
+    }
+
     handleChange() {
         this.didChangeModules(this.modules)
     }

@@ -6,6 +6,7 @@ import { FontIcon } from "react-md";
 import ContentsContainer from './../contentsContainer/ContentsContainer';
 import "./courseview.css"
 import CourseManager from "./../../managers/courseManager"
+import ContentCard from "../contentsContainer/ContentsContainer";
 
 export default class CourseView extends PureComponent {
   constructor() {
@@ -69,6 +70,24 @@ export default class CourseView extends PureComponent {
     }
 
     return null
+  }
+
+  saveSectionContents() {
+      const sectionIndex =1;
+      const moduleIndex =1;
+      const contents =  [
+          {
+              "title":"~~~~~~~~~~",
+              "type":"~~~~~~~~~~",
+              "text":"~~~~~~~~~~"
+          },
+          {
+              "title":"~~~~~~~~~~",
+              "type":"~~~~~~~~~~"
+          }
+      ];
+
+      this.courseManager.saveSectionContents(moduleIndex, sectionIndex, contents);
   }
 
   render() {
@@ -137,9 +156,14 @@ export default class CourseView extends PureComponent {
           desktopDrawerType={NavigationDrawer.DrawerTypes.PERSISTENT}
           toolbarTitle="Slack Fundamentals"
           toolbarActions={
-            <Button icon onClick={this.toggleEdit}>
+          <div>
+              <Button icon onClick={this.toggleEdit}>
               edit
-            </Button>
+                </Button>
+              {this.state.isEditing?(<Button icon onClick={() => {this.saveSectionContents() }}>
+                  save
+              </Button>): null}
+           </div>
           }
           contentId={page}
           temporaryIcon={<FontIcon>menu</FontIcon>}
@@ -155,7 +179,7 @@ export default class CourseView extends PureComponent {
         >
 
           <div className="course-section-container">
-            <ContentsContainer page={page} isEditing = {this.state.isEditing}/>
+            <ContentsContainer  saveSectionContents= { this.saveSectionContents} page={page} isEditing = {this.state.isEditing}/>
           </div>
 
         </NavigationDrawer>
