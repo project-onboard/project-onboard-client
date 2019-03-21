@@ -2,64 +2,27 @@ import React, { Component } from "react";
 import "./App.css";
 import CourseView from "./components/courseView/CourseView";
 import { FontIcon } from "react-md";
+import CourseManager from "./managers/courseManager"
 
 class App extends Component {
+
+  constructor() {
+    super()
+    this.courseManager = new CourseManager();
+  }
+
   componentWillMount() {
-    console.log("will mount");
+    this.updateState()
+  }
 
-    const modules = [
-      {
-        title: "Intro to slack",
-        contents: [
-          {
-            type: "text",
-            title: "Slack 101"
-          },
-          {
-            type: "text",
-            title: "Hello world"
-          }
-        ]
-      },
-      {
-        title: "Interacting with people",
-        contents: [
-          {
-            type: "text",
-            title: "Learn to chat"
-          },
-          {
-            type: "text",
-            title: "Learn to add emojis"
-          },
-          {
-            type: "text",
-            title: "Learn to add reactions"
-          },
-          {
-            type: "text",
-            title: "Learn to make polls"
-          }
-        ]
-      }
-    ];
-
+  updateState = () => {
+    const modules = this.courseManager.allModules();
     this.setState({ modules });
   }
 
   addModule = () => {
-    const newModule = {
-      title: "Not titled",
-      contents: [
-        {
-          type: "text",
-          title: "Slack 202"
-        }
-      ]
-    };
-
-    const allModules = [...this.state.modules, newModule];
-    this.setState({ modules: allModules });
+    this.courseManager.addModule()
+    this.updateState()
   };
 
   render() {
