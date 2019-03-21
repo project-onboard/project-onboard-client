@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
-import './App.css';
-import Simple from './Simple'
-import { FontIcon } from 'react-md';
+import React, { Component } from "react";
+import "./App.css";
+import Simple from "./Simple";
+import { Button, FontIcon } from "react-md";
 
 // import inboxListItems from './react-md-src/constants/inboxListItems';
 
 class App extends Component {
-  render() {
+  componentWillMount() {
+    console.log("will mount");
+
     const modules = [
       {
         title: "Intro to slack",
@@ -44,34 +46,57 @@ class App extends Component {
       }
     ];
 
-    const inboxListItems = modules.map((courseModule, moduleIndex) => {
-      const moduleHeader = {
-      key: 'header' + moduleIndex,
-      primaryText: courseModule.title,
-      leftIcon: <FontIcon>school</FontIcon>,
-      active: false,
-    }
-  
-      const string =  '\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0'
-      const sections = courseModule.contents.map((section, sectionIndex) => {
-        return  {
-          key: 'section' + moduleIndex + 'contentItems' + sectionIndex,
-          primaryText: string+ section.title,
-          // leftIcon: <FontIcon>inbox</FontIcon>,
-          active: false,
-        }
-      });
-  
-      return [moduleHeader, ...sections]
-    });
-  
+    this.setState({ modules });
+  }
 
-    console.log("inbox list items ", inboxListItems.flat())
+  addModule = () => {
+    const newModule = {
+      title: "Not titled",
+      contents: [
+        {
+          type: "text",
+          title: "Slack 202"
+        }
+      ]
+    };
+
+    const allModules = [...this.state.modules, newModule];
+    this.setState({ modules: allModules });
+  };
+
+  render() {
+    const inboxListItems = this.state.modules.map(
+      (courseModule, moduleIndex) => {
+        const moduleHeader = {
+          key: "header" + moduleIndex,
+          primaryText: courseModule.title,
+          leftIcon: <FontIcon>school</FontIcon>,
+          active: false
+        };
+
+        const spaces =
+          "\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0";
+        const sections = courseModule.contents.map((section, sectionIndex) => {
+          return {
+            key: "section" + moduleIndex + "contentItems" + sectionIndex,
+            primaryText: spaces + section.title,
+            active: false
+          };
+        });
+
+        return [moduleHeader, ...sections];
+      }
+    );
 
     return (
-        <div className="App">
-          { <Simple inboxListItems={inboxListItems.flat()}/> }
-        </div>
+      <div className="App">
+        {
+          <Simple
+            inboxListItems={inboxListItems.flat()}
+            addModule={this.addModule}
+          />
+        }
+      </div>
     );
   }
 }
