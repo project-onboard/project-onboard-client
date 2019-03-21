@@ -53,7 +53,7 @@ class CourseManager {
         return await fetch('http://ec2-35-183-119-218.ca-central-1.compute.amazonaws.com:3000/course/123')
         .then(data => data.json())
         .then((data) => { 
-            console.log(data[0])
+            this.title = data[0].title
             this.modules = data[0].modules
             this.handleChange()
         });
@@ -96,6 +96,17 @@ class CourseManager {
         } else {
             this.addSection(clickedItem.moduleindex, clickedItem.sectionindex)
         }
+        fetch('http://ec2-35-183-119-218.ca-central-1.compute.amazonaws.com:3000/course/123', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                title: this.title,
+                modules: this.modules,
+              })
+        })
     }
 
     handleChange() {
