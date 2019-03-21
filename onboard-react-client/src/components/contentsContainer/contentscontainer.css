@@ -11,3 +11,8 @@
     line-height: normal;
     font-size: 30px;
 }
+
+.add-content-button {
+    margin-right: -900px;
+    margin-top: -150px;
+}

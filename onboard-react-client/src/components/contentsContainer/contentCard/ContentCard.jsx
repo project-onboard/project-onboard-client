@@ -9,7 +9,7 @@ export default class ContentCard extends PureComponent {
     render() {
 
         return (
-            <Paper key={0} zDepth={0} raiseOnHover={this.props.isEditing}>
+            <Paper className='content-card' key={0} zDepth={0} raiseOnHover={this.props.isEditing}>
                 {this.props.isEditing? (
                 <Button className='delete-content-button' icon onClick={() => {
                     this.props.deleteContent(this.props.index);

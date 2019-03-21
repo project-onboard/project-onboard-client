@@ -1,3 +1,8 @@
 .delete-content-button {
     margin-right: -750px;
 }
+
+.content-card {
+    border-radius: 20px;
+    margin-top: 20px;
+}

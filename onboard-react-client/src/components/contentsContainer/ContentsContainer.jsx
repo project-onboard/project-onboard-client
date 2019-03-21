@@ -59,7 +59,8 @@ export default class ContentsContainer extends PureComponent {
 
         const addContent = (
             <div>
-                <Button floating
+                <Button className='add-content-button' floating
+                        primary
                         tooltipLabel="add contents"
                         tooltipPosition="top"
                         onClick={this.addNewCard}>
