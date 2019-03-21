@@ -9,24 +9,25 @@ class App extends Component {
   constructor() {
     super()
     this.courseManager = new CourseManager();
+    this.courseManager.didChangeModules = this.didChangeModules
   }
 
   componentWillMount() {
-    this.updateState()
-  }
-
-  updateState = () => {
     const modules = this.courseManager.allModules();
     this.setState({ modules });
   }
 
   addModule = () => {
     this.courseManager.addModule()
-    this.updateState()
+  };
+
+  didChangeModules = (modules) => {
+    console.log("did change modules")
+    this.setState({ modules });
   };
 
   render() {
-    const inboxListItems = this.state.modules.map(
+    const courseViewModels = this.state.modules.map(
       (courseModule, moduleIndex) => {
         const moduleHeader = {
           key: "header" + moduleIndex,
@@ -37,7 +38,7 @@ class App extends Component {
 
         const spaces =
           "\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0";
-        const sections = courseModule.contents.map((section, sectionIndex) => {
+        const sections = courseModule.sections.map((section, sectionIndex) => {
           return {
             key: "section" + moduleIndex + "contentItems" + sectionIndex,
             primaryText: spaces + section.title,
@@ -49,11 +50,14 @@ class App extends Component {
       }
     );
 
+
+    console.log("render modules", this.addModule)
+
     return (
       <div className="App">
         {
           <CourseView
-            inboxListItems={inboxListItems.flat()}
+            courseViewModels={courseViewModels.flat()}
             addModule={this.addModule}
           />
         }

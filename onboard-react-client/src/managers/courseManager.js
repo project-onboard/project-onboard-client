@@ -1,41 +1,49 @@
 var defaultModules = [
     {
         title: "Intro to slack",
-        contents: [
+        sections: [
             {
-                type: "text",
-                title: "Slack 101"
+                title: "Slack 101",
+                contents: [
+                    {
+                        type: "text",
+                        text: "hello world"
+                    }
+                ]
             },
             {
-                type: "text",
-                title: "Hello world"
+                title: "Hello world",
+                contents: []
             }
         ]
     },
     {
         title: "Interacting with people",
-        contents: [
+        sections: [
             {
-                type: "text",
-                title: "Learn to chat"
+                title: "Learn to chat",
+                contents: []
             },
             {
-                type: "text",
-                title: "Learn to add emojis"
+                title: "Learn to add emojis",
+                contents: []
             },
             {
-                type: "text",
-                title: "Learn to add reactions"
+                title: "Learn to add reactions",
+                contents: []
             },
             {
-                type: "text",
-                title: "Learn to make polls"
+                title: "Learn to make polls",
+                contents: []
             }
         ]
     }
 ];
 
 class CourseManager {
+
+    didChangeModules = () => {}
+
     constructor() {
         this.modules = defaultModules
     }
@@ -47,15 +55,22 @@ class CourseManager {
     addModule() {
         const newModule = {
             title: "Not titled",
-            contents: [
+            sections: [
                 {
-                    type: "text",
-                    title: "Slack 202"
+                    title: "Slack 202",
+                    contents: []
                 }
             ]
         };
 
-        this.modules = [...this.modules, newModule];
+        const modules = [...this.modules, newModule]
+        this.modules = modules
+        
+        this.handleChange()
+    }
+
+    handleChange() {
+        this.didChangeModules(this.modules)
     }
 }
 

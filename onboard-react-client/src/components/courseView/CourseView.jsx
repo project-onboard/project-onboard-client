@@ -14,9 +14,9 @@ export default class CourseView extends PureComponent {
     this.state = {
       renderNode: null,
       visible: false,
-      key: props.inboxListItems[0].key,
+      key: props.courseViewModels[0].key,
       hoverKey: "",
-      page: props.inboxListItems[0].primaryText
+      page: props.courseViewModels[0].primaryText
     };
   }
 
@@ -37,7 +37,7 @@ export default class CourseView extends PureComponent {
   render() {
     const { activeKey, hoverKey, page, renderNode } = this.state;
 
-    this.navItems = this.props.inboxListItems.map(item => {
+    this.navItems = this.props.courseViewModels.map(item => {
       if (item.divider) {
         return item;
       }
