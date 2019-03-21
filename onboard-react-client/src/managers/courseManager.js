@@ -44,15 +44,20 @@ class CourseManager {
 
     didChangeModules = () => {}
 
-    constructor() {
+    constructor(courseId) {
         this.modules = []
+        this.courseId = courseId
         this.getData()
     }
 
     async getData() {
-        return await fetch('http://ec2-35-183-119-218.ca-central-1.compute.amazonaws.com:3000/course/123')
+        return await fetch('http://ec2-35-183-119-218.ca-central-1.compute.amazonaws.com:3000/course/' + this.courseId)
         .then(data => data.json())
         .then((data) => { 
+
+            if (!data.length) {
+                return
+            }
             this.title = data[0].title
             this.modules = data[0].modules
             this.handleChange()
@@ -91,12 +96,12 @@ class CourseManager {
     }
 
     add(clickedItem) {
-        if (clickedItem.key.includes("header")) {
-            this.addModule(clickedItem.moduleindex)
-        } else {
+        if (clickedItem.key.includes("section")) {
             this.addSection(clickedItem.moduleindex, clickedItem.sectionindex)
+        } else {
+            this.addModule(clickedItem.moduleindex)
         }
-        fetch('http://ec2-35-183-119-218.ca-central-1.compute.amazonaws.com:3000/course/123', {
+        fetch('http://ec2-35-183-119-218.ca-central-1.compute.amazonaws.com:3000/course/' + this.courseId, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

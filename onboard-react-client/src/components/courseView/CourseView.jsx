@@ -8,7 +8,7 @@ import "./courseview.css"
 import CourseManager from "./../../managers/courseManager"
 
 export default class CourseView extends PureComponent {
-  constructor() {
+  constructor({match}) {
     super();
     // Update the items so they have an onClick handler to change the current page
     this.state = {
@@ -21,7 +21,7 @@ export default class CourseView extends PureComponent {
       modules: []
     };
 
-    this.courseManager = new CourseManager();
+    this.courseManager = new CourseManager(match.params.courseId);
     this.courseManager.didChangeModules = (modules) => {
       this.setState({
         activeKey: this.state.activeKey,
@@ -87,7 +87,7 @@ export default class CourseView extends PureComponent {
         const spaces =
           "\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0";
         const sections = courseModule.sections.map((section, sectionIndex) => {
-          const sectionKey = headerKey + "contentItems" + sectionIndex
+          const sectionKey = headerKey + "section" + sectionIndex
 
           return {
             key: sectionKey,
