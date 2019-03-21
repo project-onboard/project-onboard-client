@@ -5,19 +5,31 @@ import { Button, NavigationDrawer } from "react-md";
 import { FontIcon } from "react-md";
 import ContentsContainer from './../contentsContainer/ContentsContainer';
 import "./courseview.css"
+import CourseManager from "./../../managers/courseManager"
 
 export default class CourseView extends PureComponent {
-  constructor(props) {
-    super(props);
-
+  constructor() {
+    super();
     // Update the items so they have an onClick handler to change the current page
     this.state = {
       isEditing: false,
       renderNode: null,
       visible: false,
-      key: props.courseViewModels[0] ? props.courseViewModels[0].key : "",
+      key: "",
       hoverKey: "",
-      page: props.courseViewModels[0] ? props.courseViewModels[0].primaryText : ""
+      page: "",
+      modules: []
+    };
+
+    this.courseManager = new CourseManager();
+    this.courseManager.didChangeModules = (modules) => {
+      this.setState({
+        activeKey: this.state.activeKey,
+        hoverKey: this.hoverKey,
+        page: this.page,
+        renderNode: this.state.renderNode,
+        modules: modules
+      });
     };
   }
 
@@ -40,50 +52,77 @@ export default class CourseView extends PureComponent {
           isEditing: !prevState.isEditing
       }));
       console.log('toggle edit button'+ this.state.isEditing.toString())
-
   };
+  
+  rightIconForKey(item, hoverKey) {
+    if (item.key === hoverKey) {
+      return (
+          <Button
+            icon
+            primary
+            className='left-menu-add-button'
+            onClick={() => {this.courseManager.add(item)}}
+          >
+            add
+        </Button>
+      );
+    }
+
+    return null
+  }
 
   render() {
-    const { activeKey, hoverKey, page, renderNode } = this.state;
+    const { activeKey, hoverKey, page, renderNode, modules } = this.state;
 
-    this.navItems = this.props.courseViewModels.map((item) => {
-      if (item.divider) {
-        return item;
-      }
+    const courseViewModels = modules.map(
+      (courseModule, moduleIndex) => {
+        const headerKey = "header" + moduleIndex
+        const moduleHeader = {
+          key: headerKey,
+          moduleindex: moduleIndex,
+          primaryText: courseModule.title,
+          leftIcon: <FontIcon>school</FontIcon>,
+        };
 
-      var rightIcon = null;
-      if (item.key === hoverKey) {
-        rightIcon = (
-            <Button
-              icon
-              primary
-              className='left-menu-add-button'
-              onClick={() => {
-                this.props.add(item);
-              }}
-            >
-              add
-          </Button>
-        );
+        const spaces =
+          "\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0";
+        const sections = courseModule.sections.map((section, sectionIndex) => {
+          const sectionKey = headerKey + "contentItems" + sectionIndex
+
+          return {
+            key: sectionKey,
+            moduleindex: moduleIndex,
+            sectionindex: sectionIndex,
+            primaryText: spaces + section.title,
+          };
+        });
+
+        const allModules =  [moduleHeader, ...sections];
+        return allModules
       }
+    ).flat();
+
+    const navItems = courseViewModels.map((item) => {
 
       return {
         ...item,
-        rightIcon: rightIcon,
+        rightIcon: this.rightIconForKey(item, hoverKey),
         active: item.key === activeKey,
         onClick: () =>
           this.setState({
             activeKey: item.key,
             hoverKey: this.state.hoverKey,
             page: item.primaryText,
-            renderNode: this.state.renderNode
+            renderNode: this.state.renderNode,
+            modules: this.state.modules
           }),
         onMouseOver: () =>
           this.setState({
             activeKey: this.state.activeKey,
             hoverKey: item.key,
             page: item.primaryText,
-            renderNode: this.state.renderNode
+            renderNode: this.state.renderNode,
+            modules: this.state.modules
           })
       };
     });
@@ -92,7 +131,7 @@ export default class CourseView extends PureComponent {
       <div>
         <NavigationDrawer
           renderNode={renderNode}
-          navItems={this.navItems}
+          navItems={navItems}
           mobileDrawerType={NavigationDrawer.DrawerTypes.TEMPORARY}
           tabletDrawerType={NavigationDrawer.DrawerTypes.PERSISTENT}
           desktopDrawerType={NavigationDrawer.DrawerTypes.PERSISTENT}
