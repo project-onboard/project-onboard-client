@@ -3,8 +3,9 @@ import { TextField } from 'react-md';
 
 export default class TextContent extends PureComponent {
   state = {
-    value: 'This is some default text to place',
-    max: 340,
+    max: 700,
+    title: "",
+    text: "",
   };
 
   setDiv = (div) => {
@@ -15,38 +16,45 @@ export default class TextContent extends PureComponent {
   setMaxWidth = () => {
     // Make sure mobile devices don't overflow
     if (this.div) {
-      this.setState({ max: Math.min(340, this.div.offsetWidth) });
+      this.setState({ max: Math.min(700, this.div.offsetWidth) });
     }
   };
 
-  handleChange = (value) => {
-    this.setState({ value });
+   handleTitleChange = (title) => {
+      this.setState({title});
+   };
+
+    handleTextChange = (text) => {
+    this.setState({text});
   };
 
-  render() {
-    const { value, max } = this.state;
-    return (
-      <div className="md-grid">
-        <div className="md-cell md-cell--12" ref={this.setDiv}>
-          <TextField
-            id="autoresizing-1"
-            label="Floating resize"
-            placeholder="Resize when typing"
-            resize={{ max }}
-          />
-        </div>
-        <div className="md-cell md-cell--12">
-          <TextField
-            id="autoresizing-2"
-            label="Multiline text field"
-            placeholder="Some placeholder"
-            resize={{ min: 200, max }}
-            rows={2}
-            value={value}
-            onChange={this.handleChange}
-          />
-        </div>
-      </div>
-    );
+    render() {
+    const {  max, text } = this.state;
+    if(this.props.isEditing) {
+        return (
+            <div className="md-grid">
+                <div className="md-cell md-cell--12" ref={this.setDiv}>
+                    <TextField
+                        id="title"
+                        placeholder="Title"
+                        onChange={this.handleTitleChange}
+                        resize={{ max }}
+                    />
+                </div>
+                <div className="md-cell md-cell--12">
+                    <TextField
+                        placeholder="Text"
+                        resize={{ min: 200, max }}
+                        value={text}
+                        rows ={1}
+                        onChange={this.handleTextChange}
+                    />
+                </div>
+            </div>
+        );
+    } else {
+        return (<div><p>{this.state.title}</p> <p>{this.state.text}</p></div>)
+    }
+
   }
 }

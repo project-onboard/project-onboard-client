@@ -12,6 +12,7 @@ export default class CourseView extends PureComponent {
 
     // Update the items so they have an onClick handler to change the current page
     this.state = {
+      isEditing: false,
       renderNode: null,
       visible: false,
       key: props.courseViewModels[0] ? props.courseViewModels[0].key : "",
@@ -32,6 +33,14 @@ export default class CourseView extends PureComponent {
     this.setState({
       renderNode: document.getElementById("navigation-drawer-demo")
     });
+  };
+
+  toggleEdit = () => {
+      this.setState(prevState => ({
+          isEditing: !prevState.isEditing
+      }));
+      console.log('toggle edit button'+ this.state.isEditing.toString())
+
   };
 
   render() {
@@ -89,8 +98,8 @@ export default class CourseView extends PureComponent {
           desktopDrawerType={NavigationDrawer.DrawerTypes.PERSISTENT}
           toolbarTitle="Slack Fundamentals"
           toolbarActions={
-            <Button icon onClick={this.hide}>
-              close
+            <Button icon onClick={this.toggleEdit}>
+              edit
             </Button>
           }
           contentId={page}
@@ -107,7 +116,7 @@ export default class CourseView extends PureComponent {
         >
 
           <div className="course-section-container">
-            <ContentsContainer page={page} />
+            <ContentsContainer page={page} isEditing = {this.state.isEditing}/>
           </div>
 
         </NavigationDrawer>
