@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
-import Simple from "./Simple";
+import CourseView from "./components/courseView/CourseView";
 import { FontIcon } from "react-md";
-
-// import inboxListItems from './react-md-src/constants/inboxListItems';
 
 class App extends Component {
   componentWillMount() {
@@ -91,7 +89,7 @@ class App extends Component {
     return (
       <div className="App">
         {
-          <Simple
+          <CourseView
             inboxListItems={inboxListItems.flat()}
             addModule={this.addModule}
           />

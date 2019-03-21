@@ -3,9 +3,10 @@
 import React, { PureComponent } from "react";
 import { Button, NavigationDrawer } from "react-md";
 import { FontIcon } from "react-md";
-import ContentsContainer from './components/contentsContainer/ContentsContainer';
+import ContentsContainer from './../contentsContainer/ContentsContainer';
+import "./courseview.css"
 
-export default class Simple extends PureComponent {
+export default class CourseView extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -44,16 +45,20 @@ export default class Simple extends PureComponent {
       var rightIcon = null;
       if (item.key === hoverKey) {
         rightIcon = (
-          <Button
-            primary
-            onClick={() => {
-              this.props.addModule();
-            }}
-          >
-            <div className="left-menu-add-button">+</div>
+            <Button
+              icon
+              primary
+              className='left-menu-add-button'
+              onClick={() => {
+                this.props.addModule();
+              }}
+            >
+              add
           </Button>
         );
       }
+
+      // <div className="left-menu-add-button">+</div>
 
       return {
         ...item,
@@ -104,8 +109,8 @@ export default class Simple extends PureComponent {
           contentClassName="md-grid"
           drawerClassName="md-drawer"
         >
-        
-          <ContentsContainer page={page}/>
+
+          <ContentsContainer page={page} />
 
         </NavigationDrawer>
 
