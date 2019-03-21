@@ -27,7 +27,7 @@ export default class EmptyContent extends PureComponent {
   render() {
     const { value, max } = this.state;
     return (
-      <div className="md-grid">
+      <div>
             <Button floating secondary>text_format</Button>
             <Button floating secondary>insert_photo</Button>
             <Button floating secondary> video_library </Button>

@@ -28,7 +28,7 @@ export default class ContentsContainers extends PureComponent {
   render() {
     const { value, max } = this.state;
     return (
-      <div className="md-grid">
+      <div>
             <h2 className="md-cell md-cell--12 section-header">Currently on page: {this.props.page}</h2>
             {/* <section className="md-text-container md-cell md-cell--12"> */}
             <Button floating tooltipLabel="add contents" tooltipPosition="top">add</Button>
