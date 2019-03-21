@@ -58,25 +58,23 @@ export default class CourseView extends PureComponent {
         );
       }
 
-      // <div className="left-menu-add-button">+</div>
-
       return {
         ...item,
         rightIcon: rightIcon,
-        active: item.key === activeKey,
+        active: item.key == activeKey,
         onClick: () =>
           this.setState({
             activeKey: item.key,
-            hoverKey: this.hoverKey,
-            page: this.page,
-            renderNode: this.renderNode
+            hoverKey: this.state.hoverKey,
+            page: item.primaryText,
+            renderNode: this.state.renderNode
           }),
         onMouseOver: () =>
           this.setState({
-            activeKey: this.activeKey,
+            activeKey: this.state.activeKey,
             hoverKey: item.key,
-            page: this.page,
-            renderNode: this.renderNode
+            page: item.primaryText,
+            renderNode: this.state.renderNode
           })
       };
     });
@@ -95,7 +93,7 @@ export default class CourseView extends PureComponent {
               close
             </Button>
           }
-          contentId="main-demo-content"
+          contentId={page}
           temporaryIcon={<FontIcon>menu</FontIcon>}
           persistentIcon={
             <FontIcon
@@ -106,8 +104,6 @@ export default class CourseView extends PureComponent {
               arrow_back_ios
             </FontIcon>
           }
-          contentClassName="md-grid"
-          drawerClassName="md-drawer"
         >
 
           <ContentsContainer page={page} />
