@@ -1,0 +1,27 @@
+.course-list-title {
+    margin-left: 30px;
+    margin-top: 40px;
+}
+
+.course-selection-list {
+    background: #3b4051;
+    width: 100%;
+}
+
+.course-selection-class {
+    text-decoration: none;
+}
+
+.course-selection-list-item .md-text{
+    margin-left: 30px;
+    color: aliceblue
+}
+
+/* Fonts */
+.course-list-title {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+    font-size: 30px;
+}
