@@ -42,17 +42,27 @@ export default class ContentsContainer extends PureComponent {
 
   render() {
     const cards =  this.state.contents.map((card) => {
-        return (<ContentCard type = {card.type} index={card.index} setCardType={this.setCardType}/>)
+        return (<ContentCard type = {card.type} index={card.index} setCardType={this.setCardType} isEditing = {this.props.isEditing}/>)
      });
+
+    const addContent = (
+        <div>
+            <Button floating
+                tooltipLabel="add contents"
+                tooltipPosition="top"
+                onClick={this.addNewCard}>
+                add
+            </Button>
+
+        </div>);
 
     return (
       <div>
             <h2 className="main-contents-header">Currently on page: {this.props.page}</h2>
-            <Button floating tooltipLabel="add contents" tooltipPosition="top"
-                    onClick={this.addNewCard}>add</Button>
-            <div>
-                {cards}
-            </div>
+            {(this.props.isEditing)?addContent :''}
+          <div>
+              {cards}
+          </div>
       </div>
     );
   }
