@@ -52,21 +52,39 @@ class CourseManager {
         return this.modules
     }
 
-    addModule() {
+    addModule(clickedIndex) {
         const newModule = {
-            title: "Not titled",
+            title: "New Module",
             sections: [
                 {
-                    title: "Slack 202",
+                    title: "New Section",
                     contents: []
                 }
             ]
         };
 
-        const modules = [...this.modules, newModule]
-        this.modules = modules
+        this.modules.splice(clickedIndex + 1, 0, newModule)
         
         this.handleChange()
+    }
+
+    addSection(moduleIndex, sectionIndex) {
+        const newSection = {
+            title: "New Section",
+            contents: []
+        };
+
+        this.modules[moduleIndex].sections.splice(sectionIndex + 1, 0, newSection)
+
+        this.handleChange()
+    }
+
+    add(clickedItem) {
+        if (clickedItem.key.includes("header")) {
+            this.addModule(clickedItem.moduleindex)
+        } else {
+            this.addSection(clickedItem.moduleindex, clickedItem.sectionindex)
+        }
     }
 
     handleChange() {

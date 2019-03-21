@@ -17,8 +17,8 @@ class App extends Component {
     this.setState({ modules });
   }
 
-  addModule = () => {
-    this.courseManager.addModule()
+  add = (item) => {
+    this.courseManager.add(item)
   };
 
   didChangeModules = (modules) => {
@@ -31,6 +31,7 @@ class App extends Component {
       (courseModule, moduleIndex) => {
         const moduleHeader = {
           key: "header" + moduleIndex,
+          moduleindex: moduleIndex,
           primaryText: courseModule.title,
           leftIcon: <FontIcon>school</FontIcon>,
           active: false
@@ -41,6 +42,8 @@ class App extends Component {
         const sections = courseModule.sections.map((section, sectionIndex) => {
           return {
             key: "section" + moduleIndex + "contentItems" + sectionIndex,
+            moduleindex: moduleIndex,
+            sectionindex: sectionIndex,
             primaryText: spaces + section.title,
             active: false
           };
@@ -58,7 +61,7 @@ class App extends Component {
         {
           <CourseView
             courseViewModels={courseViewModels.flat()}
-            addModule={this.addModule}
+            add={this.add}
           />
         }
       </div>

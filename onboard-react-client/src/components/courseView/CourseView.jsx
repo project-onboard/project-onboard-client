@@ -37,7 +37,7 @@ export default class CourseView extends PureComponent {
   render() {
     const { activeKey, hoverKey, page, renderNode } = this.state;
 
-    this.navItems = this.props.courseViewModels.map(item => {
+    this.navItems = this.props.courseViewModels.map((item) => {
       if (item.divider) {
         return item;
       }
@@ -50,7 +50,7 @@ export default class CourseView extends PureComponent {
               primary
               className='left-menu-add-button'
               onClick={() => {
-                this.props.addModule();
+                this.props.add(item);
               }}
             >
               add
