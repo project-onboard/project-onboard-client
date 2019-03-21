@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Simple from "./Simple";
-import { Button, FontIcon } from "react-md";
+import { FontIcon } from "react-md";
 
 // import inboxListItems from './react-md-src/constants/inboxListItems';
 
