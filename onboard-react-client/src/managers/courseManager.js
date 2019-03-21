@@ -45,7 +45,18 @@ class CourseManager {
     didChangeModules = () => {}
 
     constructor() {
-        this.modules = defaultModules
+        this.modules = []
+        this.getData()
+    }
+
+    async getData() {
+        return await fetch('http://ec2-35-183-119-218.ca-central-1.compute.amazonaws.com:3000/course/123')
+        .then(data => data.json())
+        .then((data) => { 
+            console.log(data[0])
+            this.modules = data[0].modules
+            this.handleChange()
+        });
     }
 
     allModules() {

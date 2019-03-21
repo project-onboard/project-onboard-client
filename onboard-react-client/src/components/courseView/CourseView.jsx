@@ -14,9 +14,9 @@ export default class CourseView extends PureComponent {
     this.state = {
       renderNode: null,
       visible: false,
-      key: props.courseViewModels[0].key,
+      key: props.courseViewModels[0] ? props.courseViewModels[0].key : "",
       hoverKey: "",
-      page: props.courseViewModels[0].primaryText
+      page: props.courseViewModels[0] ? props.courseViewModels[0].primaryText : ""
     };
   }
 
