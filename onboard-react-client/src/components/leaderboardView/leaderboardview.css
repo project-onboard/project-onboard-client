@@ -1,26 +1,31 @@
-.course-list-title {
+.leaderboard-list-title {
     text-align: center;
     margin-top: 40px;
 }
 
-.course-selection-list {
+.leaderboard-list {
     background: #3b4051;
     width: 30%;
     margin: auto;
 }
 
-.course-selection-class {
+.leaderboard-class {
     text-decoration: none;
 }
 
-.course-selection-list-item .md-text{
+.leaderboard-list-item .md-text{
     margin-left: 10px;
     color: aliceblue
 }
 
+.leaderboard-score-item {
+    color: aliceblue;
+}
+
 /* Fonts */
-.course-list-title,
-.course-selection-list-item .md-text {
+.leaderboard-list-title,
+.leaderboard-list-item .md-text,
+.leaderboard-score-item {
     font-family: Roboto;
     font-style: normal;
     font-weight: 200;
@@ -28,6 +33,6 @@
     font-size: 16px;
 }
 
-.course-list-title {
+.leaderboard-list-title {
     font-size: 30px;
 }
