@@ -21,6 +21,7 @@ export default class ContentCard extends PureComponent {
                     setCardType={this.props.setCardType}
                 /> : null}
                 {(this.props.type == "text") ? <TextContent
+                    updateContentChange = {this.props.updateContentChange}
                     isEditing={this.props.isEditing}/> : null}
             </Paper>
         );

@@ -21,12 +21,14 @@ export default class TextContent extends PureComponent {
   };
 
    handleTitleChange = (title) => {
-      this.setState({title});
+       this.props.updateContentChange({title: title, text: this.state.text})
+       this.setState({title});
    };
 
     handleTextChange = (text) => {
-    this.setState({text});
-  };
+        this.props.updateContentChange({title: this.state.title, text: text})
+        this.setState({text});
+    };
 
     render() {
     const {  max, text, title } = this.state;

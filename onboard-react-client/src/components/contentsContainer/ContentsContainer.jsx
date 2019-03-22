@@ -46,6 +46,15 @@ export default class ContentsContainer extends PureComponent {
         });
     };
 
+    updateContentChange = (index, newContent) => {
+        var newContents = this.state.contents;
+        newContents[index] = newContent;
+        this.setState({
+            contents: newContents
+        });
+        this.props.getCurrentContents(newContents);
+    };
+
     render() {
         const cards = this.state.contents.map((card) => {
             return (<ContentCard type={card.type}
@@ -53,6 +62,9 @@ export default class ContentsContainer extends PureComponent {
                                  setCardType={this.setCardType}
                                  isEditing={this.props.isEditing}
                                  deleteContent={this.deleteContent}
+                                 updateContentChange = {(content) => {
+                                     this.updateContentChange(card.index, content)
+                                 }}
             />)
         });
 

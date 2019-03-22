@@ -9,30 +9,33 @@ import CourseManager from "./../../managers/courseManager"
 import ContentCard from "../contentsContainer/ContentsContainer";
 
 export default class CourseView extends PureComponent {
-  constructor({match}) {
-    super();
+    constructor({match}) {
+        super();
 
-    this.state = {
-      isEditing: false,
-      renderNode: null,
-      visible: false,
-      key: "",
-      hoverKey: "",
-      page: "",
-      modules: []
-    };
+        this.state = {
+            isEditing: false,
+            renderNode: null,
+            visible: false,
+            key: "",
+            hoverKey: "",
+            page: "",
+            modules: [],
+            currentSection: 0,
+            currentModule: 0,
+            currentContents:[],
+        };
 
-    this.courseManager = new CourseManager(match.params.courseId);
-    this.courseManager.didChangeModules = (modules) => {
-      this.setState({
-        activeKey: this.state.activeKey,
-        hoverKey: this.hoverKey,
-        page: this.page,
-        renderNode: this.state.renderNode,
-        modules: modules
-      });
-    };
-  }
+        this.courseManager = new CourseManager(match.params.courseId);
+        this.courseManager.didChangeModules = (modules) => {
+            this.setState({
+                activeKey: this.state.activeKey,
+                hoverKey: this.hoverKey,
+                page: this.page,
+                renderNode: this.state.renderNode,
+                modules: modules
+            });
+        };
+    }
 
   show = () => {
     this.setState({ visible: true });
@@ -54,7 +57,11 @@ export default class CourseView extends PureComponent {
       }));
       console.log('toggle edit button'+ this.state.isEditing.toString())
   };
-  
+
+  getCurrentContents = (newContents) => {
+      this.setState({contents:newContents});
+  };
+
   rightIconForKey(item, hoverKey) {
     if (item.key === hoverKey) {
       return (
@@ -72,22 +79,10 @@ export default class CourseView extends PureComponent {
     return null
   }
 
-  saveSectionContents() {
-      const sectionIndex =1;
-      const moduleIndex =1;
-      const contents =  [
-          {
-              "title":"~~~~~~~~~~",
-              "type":"~~~~~~~~~~",
-              "text":"~~~~~~~~~~"
-          },
-          {
-              "title":"~~~~~~~~~~",
-              "type":"~~~~~~~~~~"
-          }
-      ];
-
-      this.courseManager.saveSectionContents(moduleIndex, sectionIndex, contents);
+  saveSectionContents(contents) {
+      const sectionIndex = this.state.currentSection;
+      const moduleIndex = this.state.currentModule;
+      this.courseManager.saveSectionContents(moduleIndex, sectionIndex, this.state.contents);
   }
 
   render() {
@@ -132,7 +127,9 @@ export default class CourseView extends PureComponent {
                         hoverKey: this.state.hoverKey,
                         page: item.primaryText,
                         renderNode: this.state.renderNode,
-                        modules: this.state.modules
+                        modules: this.state.modules,
+                        currentSection: item.sectionindex,
+                        currentModule: item.moduleindex
                     }),
                 onMouseOver: () =>
                     this.setState({
@@ -191,7 +188,10 @@ export default class CourseView extends PureComponent {
         >
 
           <div className="course-section-container">
-            <ContentsContainer  saveSectionContents= { this.saveSectionContents} page={page} isEditing = {this.state.isEditing}/>
+            <ContentsContainer  saveSectionContents= { this.saveSectionContents} page={page}
+                                isEditing = {this.state.isEditing}
+                                getCurrentContents = {this.getCurrentContents}
+            />
           </div>
 
         </NavigationDrawer>
