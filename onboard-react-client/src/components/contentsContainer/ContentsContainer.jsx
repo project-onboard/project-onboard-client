@@ -65,9 +65,9 @@ export default class ContentsContainer extends PureComponent {
 
     };
 
-    updateContentChange = (index, newContent) => {
+    updateContentChange = (updateIndex, newContent) => {
         var newContents = this.state.contents;
-        newContents[index] = newContent;
+        newContents[updateIndex] = newContent;
         this.setState({
             contents: newContents
         });
@@ -80,6 +80,7 @@ export default class ContentsContainer extends PureComponent {
                                  index={index}
                                  title={card.title}
                                  text={card.text}
+                                 url={card.url}
                                  setCardType={this.setCardType}
                                  isEditing={this.props.isEditing}
                                  deleteContent={this.deleteContent}
