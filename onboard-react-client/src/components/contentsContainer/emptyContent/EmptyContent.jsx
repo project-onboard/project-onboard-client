@@ -13,7 +13,9 @@ const EmptyContent = ({ isEditing, index, type, setCardType }) => {
           <Button className='empty-content-button' icon onClick={() => {
                     setCardType(index, "image");
                 }}>insert_photo</Button>
-          <Button className='empty-content-button' icon>video_library</Button>
+          <Button className='empty-content-button' icon onClick={() => {
+                    setCardType(index, "video");
+                }}>video_library</Button>
           <Button className='empty-content-button' icon>assignment</Button>
         </div>
       </div>
