@@ -1,6 +1,7 @@
 class CourseManager {
 
-    didChangeModules = () => {}
+    didChangeModules = () => {
+    }
 
     constructor(courseId) {
         this.modules = []
@@ -10,16 +11,16 @@ class CourseManager {
 
     async getData() {
         return await fetch('http://ec2-35-183-119-218.ca-central-1.compute.amazonaws.com:3000/course/' + this.courseId)
-        .then(data => data.json())
-        .then((data) => { 
+            .then(data => data.json())
+            .then((data) => {
 
-            if (!data.length) {
-                return
-            }
-            this.title = data[0].title
-            this.modules = data[0].modules
-            this.handleChange()
-        });
+                if (!data.length) {
+                    return
+                }
+                this.title = data[0].title
+                this.modules = data[0].modules
+                this.handleChange()
+            });
     }
 
     addModule(clickedIndex) {
@@ -34,7 +35,7 @@ class CourseManager {
         };
 
         this.modules.splice(clickedIndex + 1, 0, newModule)
-        
+
         this.handleChange()
     }
 
@@ -64,11 +65,11 @@ class CourseManager {
             body: JSON.stringify({
                 title: this.title,
                 modules: this.modules,
-              })
+            })
         })
     }
 
-    saveSectionContents(moduleIndex, sectionIndex, contents){
+    saveSectionContents(moduleIndex, sectionIndex, contents) {
         this.modules[moduleIndex].sections[sectionIndex].contents = contents;
         fetch('http://ec2-35-183-119-218.ca-central-1.compute.amazonaws.com:3000/course/' + this.courseId, {
             method: 'POST',
