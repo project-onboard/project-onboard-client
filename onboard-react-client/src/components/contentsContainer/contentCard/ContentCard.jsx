@@ -33,6 +33,8 @@ export default class ContentCard extends PureComponent {
                     updateContentChange = {this.props.updateContentChange}
                     isEditing={this.props.isEditing}/> : null}
                 {(this.props.type == "video") ? <VideoContent
+                    url = {this.props.url}
+                    updateContentChange = {this.props.updateContentChange}
                     isEditing={this.props.isEditing}/> : null}
                  {(this.props.type == "task") ? <TaskContent
                     isEditing={this.props.isEditing}/> : null}
