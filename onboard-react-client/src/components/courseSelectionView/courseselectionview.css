@@ -16,7 +16,7 @@
     text-decoration: none;
 }
 
-.course-selection-list-item .md-text{
+.course-selection-list-item .md-text {
     margin-left: 10px;
     color: aliceblue
 }
@@ -41,5 +41,5 @@
 }
 
 .course-list-username {
-    font-size: 20px;   
+    font-size: 20px;
 }

@@ -17,9 +17,9 @@ export default class ContentsContainer extends PureComponent {
     };
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if(this.state.contents.length === 0 ||
-            (prevState.currentSection!= this.props.sectionIndex||
-                prevState.currentModule != this.props.moduleIndex)){
+        if (this.state.contents.length === 0 ||
+            (prevState.currentSection != this.props.sectionIndex ||
+                prevState.currentModule != this.props.moduleIndex)) {
             this.setState((prevState, props) => ({
                 contents: props.contents,
                 currentModule: props.moduleIndex,
@@ -29,7 +29,7 @@ export default class ContentsContainer extends PureComponent {
     }
 
     addNewCard = () => {
-        const newContent = { type: "empty"}
+        const newContent = {type: "empty"}
         this.setState((prevState, props) => ({
             count: prevState.count + 1,
             contents: [...prevState.contents, newContent]
@@ -38,21 +38,23 @@ export default class ContentsContainer extends PureComponent {
 
     setCardType = (newIndex, newType) => {
 
-            const newContents = this.state.contents.map((item,index)  => {
-                if (index === newIndex) {
-                    item.type = newType;
-                }
-                return item;
-            });
+        const newContents = this.state.contents.map((item, index) => {
+            if (index === newIndex) {
+                item.type = newType;
+            }
+            return item;
+        });
 
-            this.setState({contents:newContents});
+        this.setState({contents: newContents});
 
     };
 
     deleteContent = index => {
         this.state.contents.splice(index, 1);
 
-        const newContents = this.state.contents.map( item => { return item } )
+        const newContents = this.state.contents.map(item => {
+            return item
+        })
 
         let newState = {
             contents: newContents
@@ -61,7 +63,7 @@ export default class ContentsContainer extends PureComponent {
 
         this.props.getCurrentContents(newState.contents);
 
-        this.setState( newState );
+        this.setState(newState);
 
     };
 
@@ -75,7 +77,7 @@ export default class ContentsContainer extends PureComponent {
     };
 
     render() {
-        const cards = this.state.contents.map((card,index) => {
+        const cards = this.state.contents.map((card, index) => {
             return (<ContentCard type={card.type}
                                  index={index}
                                  title={card.title}
@@ -85,7 +87,7 @@ export default class ContentsContainer extends PureComponent {
                                  isEditing={this.props.isEditing}
                                  username={this.props.username}
                                  deleteContent={this.deleteContent}
-                                 updateContentChange = {(content) => {
+                                 updateContentChange={(content) => {
                                      this.updateContentChange(index, content)
                                  }}
             />)

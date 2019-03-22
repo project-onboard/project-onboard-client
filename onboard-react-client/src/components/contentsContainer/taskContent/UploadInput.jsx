@@ -3,78 +3,78 @@ import {useDropzone} from 'react-dropzone';
 import './uploadinput.css';
 
 const thumbsContainer = {
-  display: 'flex',
-  flexDirection: 'row',
-  flexWrap: 'wrap',
-  marginTop: 16
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginTop: 16
 };
 
 const thumb = {
-  display: 'inline-flex',
-  borderRadius: 2,
-  border: '1px solid #eaeaea',
-  marginBottom: 8,
-  marginRight: 8,
-  width: 300,
-  height: 300,
-  padding: 4,
-  boxSizing: 'border-box'
+    display: 'inline-flex',
+    borderRadius: 2,
+    border: '1px solid #eaeaea',
+    marginBottom: 8,
+    marginRight: 8,
+    width: 300,
+    height: 300,
+    padding: 4,
+    boxSizing: 'border-box'
 };
 
 const thumbInner = {
-  display: 'flex',
-  minWidth: 0,
-  overflow: 'hidden'
+    display: 'flex',
+    minWidth: 0,
+    overflow: 'hidden'
 };
 
 const img = {
-  display: 'block',
+    display: 'block',
 };
 
 
 function Previews(props) {
-  const [files, setFiles] = useState([]);
-  const {getRootProps, getInputProps} = useDropzone({
-    accept: 'image/*',
-    onDrop: acceptedFiles => {
+    const [files, setFiles] = useState([]);
+    const {getRootProps, getInputProps} = useDropzone({
+        accept: 'image/*',
+        onDrop: acceptedFiles => {
 
-      props.userDidSetFile()
+            props.userDidSetFile()
 
-      setFiles(acceptedFiles.map(file => Object.assign(file, {
-        preview: URL.createObjectURL(file)
-      })));
-    }
-  });
-  
-  const thumbs = files.map(file => (
-    <div style={thumb} key={file.name}>
-      <div style={thumbInner}>
-        <img className='image-preview'
-          src={file.preview}
-          style={img}
-        />
-      </div>
-    </div>
-  ));
+            setFiles(acceptedFiles.map(file => Object.assign(file, {
+                preview: URL.createObjectURL(file)
+            })));
+        }
+    });
 
-  useEffect(() => () => {
-    // Make sure to revoke the data uris to avoid memory leaks
-    files.forEach(file => URL.revokeObjectURL(file.preview));
-  }, [files]);
-
-  return (
-    <section>
-      <div {...getRootProps()}>
-        <input {...getInputProps()} />
-        <div className='upload-input-box'>
-            <p className='upload-title'>Drag 'n' drop some files here, or click to select files</p>
+    const thumbs = files.map(file => (
+        <div style={thumb} key={file.name}>
+            <div style={thumbInner}>
+                <img className='image-preview'
+                     src={file.preview}
+                     style={img}
+                />
+            </div>
         </div>
-      </div>
-      <aside style={thumbsContainer}>
-        {thumbs}
-      </aside>
-    </section>
-  );
+    ));
+
+    useEffect(() => () => {
+        // Make sure to revoke the data uris to avoid memory leaks
+        files.forEach(file => URL.revokeObjectURL(file.preview));
+    }, [files]);
+
+    return (
+        <section>
+            <div {...getRootProps()}>
+                <input {...getInputProps()} />
+                <div className='upload-input-box'>
+                    <p className='upload-title'>Drag 'n' drop some files here, or click to select files</p>
+                </div>
+            </div>
+            <aside style={thumbsContainer}>
+                {thumbs}
+            </aside>
+        </section>
+    );
 }
 
 export default Previews
