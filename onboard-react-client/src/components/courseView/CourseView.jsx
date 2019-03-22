@@ -86,7 +86,7 @@ export default class CourseView extends PureComponent {
   }
 
   render() {
-    const { activeKey, hoverKey, page, renderNode, modules } = this.state;
+    const {isEditing, activeKey, hoverKey, page, renderNode, modules } = this.state;
 
     const courseViewModels = modules.map(
       (courseModule, moduleIndex) => {
@@ -155,6 +155,7 @@ export default class CourseView extends PureComponent {
         }
     });
 
+    const isEditingIcon = isEditing ? ("remove_red_eye") : ("edit")
     return (
       <div>
         <NavigationDrawer
@@ -166,12 +167,12 @@ export default class CourseView extends PureComponent {
           toolbarTitle="Slack Fundamentals"
           toolbarActions={
           <div>
-              <Button icon onClick={this.toggleEdit}>
-              edit
-                </Button>
-              {this.state.isEditing?(<Button icon onClick={() => {this.saveSectionContents() }}>
+              {isEditing?(<Button icon onClick={() => {this.saveSectionContents() }}>
                   save
               </Button>): null}
+              <Button icon onClick={this.toggleEdit}>
+              {isEditingIcon}
+                </Button>
            </div>
           }
           contentId={page}
