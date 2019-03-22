@@ -21,12 +21,12 @@ export default class TextContent extends PureComponent {
   };
 
    handleTitleChange = (title) => {
-       this.props.updateContentChange({title: title, text: this.state.text})
+       this.props.updateContentChange({title: title, text: this.state.text, type: "text"})
        this.setState({title});
    };
 
     handleTextChange = (text) => {
-        this.props.updateContentChange({title: this.state.title, text: text})
+        this.props.updateContentChange({title: this.state.title, text: text, type: "text"})
         this.setState({text});
     };
 
@@ -41,7 +41,8 @@ export default class TextContent extends PureComponent {
                         placeholder="Title"
                         onChange={this.handleTitleChange}
                         resize={{ max }}
-                        value = {title}
+                        value={title}
+                        autoComplete="off"
                     />
                 </div>
                 <div className="md-cell md-cell--12">
@@ -49,7 +50,7 @@ export default class TextContent extends PureComponent {
                         placeholder="Text"
                         resize={{ min: 200, max }}
                         value={text}
-                        rows ={1}
+                        rows={1}
                         onChange={this.handleTextChange}
                     />
                 </div>
