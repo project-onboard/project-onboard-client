@@ -1,0 +1,25 @@
+.upload-input-box {
+    background: rgb(215, 222, 237);
+    height: 100px;
+    border-radius: 20px;
+    border-width: 2px;
+    border-color:rgb(181, 190, 207);
+    border-style: dashed;
+}
+
+.upload-title {
+    margin-top: 34px;
+    text-align: center;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+    font-size: 20px;
+}
+
+.image-preview {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+}
