@@ -12,7 +12,7 @@ export default (function() {
   }
 
   function emitLeaderboardFromPublisher(data) {
-    socket.emit('leaderboardPublisherFromSingleUser', { data })
+    socket.emit('leaderboardPublisherFromSingleUser', data)
   }
 
   return {

@@ -10,9 +10,10 @@ class App extends Component {
   componentWillMount() {
     this.socket = socket
     socket.registerLeaderboardSubscriber((data) => {
-      console.log("recieved socket message foe leaderboard", data)
+      console.log("received socket message for leaderboard", data)
     })
-    socket.emitLeaderboardFromPublisher({ message: "this is a message from app.jsx"})
+    socket.emitLeaderboardFromPublisher({ name: "Justin Goping", id: "jgop", score: 300 })
+    socket.emitLeaderboardFromPublisher({ name: "Paige Sun", id: "psun", score: 600 })
   }
 
   render() {
