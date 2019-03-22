@@ -1,7 +1,7 @@
 const io = require('socket.io-client')
 
 export default (function() {
-  const socket = io.connect('http://localhost:3000')
+  const socket = io.connect('http://ec2-35-183-119-218.ca-central-1.compute.amazonaws.com:3000')
 
   const registerLeaderboardSubscriber = onLeaderboardListReceived => {
     socket.on('leaderboardSubscriber', onLeaderboardListReceived)
