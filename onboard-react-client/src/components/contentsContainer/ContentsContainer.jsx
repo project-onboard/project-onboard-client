@@ -31,7 +31,7 @@ export default class ContentsContainer extends PureComponent {
     }
 
     addNewCard = () => {
-        const newContent = {index: this.state.count, type: "empty"}
+        const newContent = { type: "empty"}
         this.setState((prevState, props) => ({
             count: prevState.count + 1,
             contents: [...prevState.contents, newContent]
@@ -72,7 +72,7 @@ export default class ContentsContainer extends PureComponent {
     };
 
     render() {
-        const cards = this.state.contents.map((card) => {
+        const cards = this.state.contents.map((card,index) => {
             return (<ContentCard type={card.type}
                                  index={card.index}
                                  title={card.title}
@@ -81,7 +81,7 @@ export default class ContentsContainer extends PureComponent {
                                  isEditing={this.props.isEditing}
                                  deleteContent={this.deleteContent}
                                  updateContentChange = {(content) => {
-                                     this.updateContentChange(card.index, content)
+                                     this.updateContentChange(index, content)
                                  }}
             />)
         });

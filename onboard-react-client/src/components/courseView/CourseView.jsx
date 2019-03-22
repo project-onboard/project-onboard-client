@@ -79,7 +79,7 @@ export default class CourseView extends PureComponent {
     return null
   }
 
-  saveSectionContents(contents) {
+  saveSectionContents() {
       const sectionIndex = this.state.currentSection;
       const moduleIndex = this.state.currentModule;
       this.courseManager.saveSectionContents(moduleIndex, sectionIndex, this.state.contents);
