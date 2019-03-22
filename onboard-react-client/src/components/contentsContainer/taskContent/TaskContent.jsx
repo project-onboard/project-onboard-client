@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { TextField } from 'react-md';
 import './taskcontent.css';
+import UploadInput from './UploadInput';
 
 export default class TaskContent extends PureComponent {
   state = {
@@ -20,7 +21,11 @@ export default class TaskContent extends PureComponent {
         </div>
       );
     } else {
-      return <img class='image' src={this.state.url} />;
+      return (
+        // <div>
+          <UploadInput/>
+        // </div>
+      );
     }
   }
 }
