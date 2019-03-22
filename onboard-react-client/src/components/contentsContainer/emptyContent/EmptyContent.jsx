@@ -1,6 +1,5 @@
-import React, { PureComponent } from 'react';
-import { TextField } from 'react-md';
-import { FontIcon, Button, Paper, NavigationDrawer, SVGIcon } from 'react-md';
+import React from 'react';
+import { Button } from 'react-md';
 import "./emptycontent.css"
 
 const EmptyContent = ({ isEditing, index, type, setCardType }) => {
@@ -11,7 +10,9 @@ const EmptyContent = ({ isEditing, index, type, setCardType }) => {
           <Button className='empty-content-button' icon onClick={() => {
             setCardType(index, "text");
           }}>text_format</Button>
-          <Button className='empty-content-button' icon>insert_photo</Button>
+          <Button className='empty-content-button' icon onClick={() => {
+                    setCardType(index, "image");
+                }}>insert_photo</Button>
           <Button className='empty-content-button' icon>video_library</Button>
           <Button className='empty-content-button' icon>assignment</Button>
         </div>

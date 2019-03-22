@@ -3,6 +3,7 @@ import {TextField} from 'react-md';
 import {FontIcon, Button, Paper, NavigationDrawer, SVGIcon} from 'react-md';
 import EmptyContent from "../emptyContent/EmptyContent";
 import TextContent from "../textContent/TextContent";
+import ImageContent from "../imageContent/ImageContent";
 import "./contentcard.css"
 
 export default class ContentCard extends PureComponent {
@@ -22,6 +23,8 @@ export default class ContentCard extends PureComponent {
                 /> : null}
                 {(this.props.type == "text") ? <TextContent
                     updateContentChange = {this.props.updateContentChange}
+                    isEditing={this.props.isEditing}/> : null}
+                {(this.props.type == "image") ? <ImageContent
                     isEditing={this.props.isEditing}/> : null}
             </Paper>
         );
