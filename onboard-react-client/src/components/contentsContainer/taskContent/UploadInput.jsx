@@ -76,6 +76,10 @@ function Previews(props) {
 
 export default Previews
 
+// Upload to S3 via react
+// https://medium.com/@fabianopb/upload-files-with-node-and-react-to-aws-s3-in-3-steps-fdaa8581f2bd
+
+
 // const uploadFile = () => {
 //     const selectedFile = this.fileInput.current.files[0];
 //     const formData = new FormData();
