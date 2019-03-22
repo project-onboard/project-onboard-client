@@ -1,0 +1,20 @@
+.big-container {
+    width: 50%;
+    margin: auto;
+}
+
+.leaderboard-list-title {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+    font-size: 30px;
+}
+
+.login-input-textfield {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    font-size: 20px;
+}

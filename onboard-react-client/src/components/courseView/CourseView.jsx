@@ -9,10 +9,11 @@ import CourseManager from "./../../managers/courseManager"
 import ContentCard from "../contentsContainer/ContentsContainer";
 
 export default class CourseView extends PureComponent {
-    constructor({match}) {
+    constructor({match, username}) {
         super();
 
         this.state = {
+            username: username,
             isEditing: false,
             renderNode: null,
             visible: false,
