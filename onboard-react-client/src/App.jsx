@@ -24,9 +24,12 @@ class App extends Component {
     socket.registerLeaderboardSubscriber((data) => {
       console.log("received socket message for leaderboard", data)
     })
-    socket.emitLeaderboardFromPublisher({ name: "Justin Goping", id: "jgop", score: 300 })
-    socket.emitLeaderboardFromPublisher({ name: "Paige Sun", id: "psun", score: 600 })
   }
+
+  // incrementUserScore() {
+  //   console.log("incrementUserScore")
+  //   socket.emitLeaderboardFromPublisher({ name: this.username, id: this.username })
+  // }
 
   render() {
     return (

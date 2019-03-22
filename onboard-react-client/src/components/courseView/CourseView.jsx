@@ -192,6 +192,7 @@ export default class CourseView extends PureComponent {
 
           <div className="course-section-container">
             <ContentsContainer  page={page}
+                                username={this.state.username}
                                 isEditing = {this.state.isEditing}
                                 getCurrentContents = {this.getCurrentContents}
                                 contents = {this.state.currentContents}

@@ -20,6 +20,11 @@ export default class CourseView extends PureComponent {
     socket.emitLeaderboardFromPublisher(null);
   }
 
+  clearLeaderboard = () => {
+    console.log("Clearing leaderboard")
+    socket.leaderboardPublisherClear()
+  }
+
   render() {
     const listItemJSX = this.state.leaderboard.map((user, index) => {
       const rightIcon = user.score;
@@ -45,6 +50,10 @@ export default class CourseView extends PureComponent {
             Back
           </Button>
         </Link>
+
+        <Button className='clear-board-button' onClick={this.clearLeaderboard}>
+            Clear Leaderboard
+      </Button>
       </div>
     );
   }

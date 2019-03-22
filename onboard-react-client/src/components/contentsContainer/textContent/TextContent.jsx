@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { TextField } from 'react-md';
+import './text-content.css'
 
 export default class TextContent extends PureComponent {
   state = {
@@ -60,8 +61,10 @@ export default class TextContent extends PureComponent {
             </div>
         );
     } else {
-        return (<div><p>{this.props.title}</p> <p>{this.props.text}</p></div>)
+        return (<div>
+          <p className='text-content-title'>{this.props.title}</p>
+        <p className='text-content-text'>{this.props.text}</p>
+        </div>)
     }
-
   }
 }

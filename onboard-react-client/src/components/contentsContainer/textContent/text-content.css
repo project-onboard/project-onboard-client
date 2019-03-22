@@ -1,0 +1,15 @@
+.text-content-title {
+    font-family: Roboto;
+    font-style: bold;
+    font-weight: 600;
+    line-height: normal;
+    font-size: 26px;
+}
+
+.text-content-text {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+    font-size: 18px;
+}
