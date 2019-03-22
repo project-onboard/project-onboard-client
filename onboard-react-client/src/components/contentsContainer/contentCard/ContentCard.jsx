@@ -23,7 +23,9 @@ export default class ContentCard extends PureComponent {
                     type={this.props.type}
                     setCardType={this.props.setCardType}
                 /> : null}
-                {(this.props.type == "text") ? <TextContent
+                {(this.props.type == "Text") ? <TextContent
+                    title = {this.props.title}
+                    text = {this.props.text}
                     updateContentChange = {this.props.updateContentChange}
                     isEditing={this.props.isEditing}/> : null}
                 {(this.props.type == "image") ? <ImageContent

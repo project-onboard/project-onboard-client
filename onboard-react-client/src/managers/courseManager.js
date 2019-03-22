@@ -70,7 +70,7 @@ class CourseManager {
 
     saveSectionContents(moduleIndex, sectionIndex, contents){
         this.modules[moduleIndex].sections[sectionIndex].contents = contents;
-        fetch('http://ec2-35-183-119-218.ca-central-1.compute.amazonaws.com:3000/course/123', {
+        fetch('http://ec2-35-183-119-218.ca-central-1.compute.amazonaws.com:3000/course/' + this.courseId, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

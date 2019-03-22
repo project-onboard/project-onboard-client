@@ -12,7 +12,23 @@ export default class ContentsContainer extends PureComponent {
         max: 340,
         count: 0,
         contents: [],
+        currentSection: 0,
+        currentModule: 0
     };
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(this.state.contents.length === 0 ||
+            (prevState.currentSection!= this.props.sectionIndex||
+                prevState.currentModule != this.props.moduleIndex)){
+            this.setState((prevState, props) => ({
+                contents: props.contents,
+                currentModule: props.moduleIndex,
+                currentSection: props.sectionIndex,
+            }));
+            console.log("Yawei");
+            console.log(this.props.contents);
+        }
+    }
 
     addNewCard = () => {
         const newContent = {index: this.state.count, type: "empty"}
@@ -59,6 +75,8 @@ export default class ContentsContainer extends PureComponent {
         const cards = this.state.contents.map((card) => {
             return (<ContentCard type={card.type}
                                  index={card.index}
+                                 title={card.title}
+                                 text={card.text}
                                  setCardType={this.setCardType}
                                  isEditing={this.props.isEditing}
                                  deleteContent={this.deleteContent}
