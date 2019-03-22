@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
-import { List, ListItem } from 'react-md';
+import { Link } from 'react-router-dom';
+import { List, ListItem, Button } from 'react-md';
 import socket from '../../socket'
 import './leaderboardview.css'
 
@@ -30,11 +31,16 @@ export default class CourseView extends PureComponent {
           });
       
           return (
-            <div>
-              <div>
+            <div className='big-container'>
+                <div>
                 <p className='leaderboard-list-title'>Leaderboard</p>
                 <List className='leaderboard-list'>{listItemJSX}</List>
               </div>
+
+              <Link to={'/'}>
+              <Button className='back-button' primary raised>Back</Button>
+
+            </Link>
             </div>
           );
     }

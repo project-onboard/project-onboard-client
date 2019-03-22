@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
-import { List, ListItem } from 'react-md';
+import { List, ListItem, Button } from 'react-md';
 import CoursesManager from './../../managers/coursesManager';
 import './courseselectionview.css'
 
@@ -30,11 +30,15 @@ class CourseSelectionView extends PureComponent {
     });
 
     return (
-      <div>
+      <div className='big-container'>
         <div>
           <p className='course-list-title'>Courses List</p>
           <List className='course-selection-list'>{listItemJSX}</List>
         </div>
+
+        <Link to={'/leaderboard/'}>
+          <Button className='leaderboard-button' primary raised>Leaderboard</Button>
+        </Link>
       </div>
     );
   }
