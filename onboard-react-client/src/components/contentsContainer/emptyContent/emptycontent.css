@@ -4,7 +4,7 @@
 
 .empty-content-buttons-flexbox {
     display: flex;
-    height: inherit;
+    height: 160px;
     align-items: center;
     justify-content: center;
 }
