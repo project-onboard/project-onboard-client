@@ -21,17 +21,20 @@ export default class TextContent extends PureComponent {
   };
 
    handleTitleChange = (title) => {
-       this.props.updateContentChange({title: title, text: this.state.text, type: "text"})
+       this.props.updateContentChange({title: title, text: this.state.text, type: "Text"})
        this.setState({title});
    };
 
     handleTextChange = (text) => {
-        this.props.updateContentChange({title: this.state.title, text: text, type: "text"})
+        this.props.updateContentChange({title: this.state.title, text: text, type: "Text"})
         this.setState({text});
     };
 
     render() {
-    const {  max, text, title } = this.state;
+   // const {  max, text, title } = this.state;
+        const {  max} = this.state;
+        const title = this.props.title;
+        const text = this.props.text;
     if(this.props.isEditing) {
         return (
             <div className="md-grid">
@@ -57,7 +60,7 @@ export default class TextContent extends PureComponent {
             </div>
         );
     } else {
-        return (<div><p>{this.state.title}</p> <p>{this.state.text}</p></div>)
+        return (<div><p>{this.props.title}</p> <p>{this.props.text}</p></div>)
     }
 
   }

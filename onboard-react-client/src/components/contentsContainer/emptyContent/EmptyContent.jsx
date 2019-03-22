@@ -8,7 +8,7 @@ const EmptyContent = ({ isEditing, index, type, setCardType }) => {
       <div className='empty-content-container'>
         <div className='empty-content-buttons-flexbox'>
           <Button className='empty-content-button' icon onClick={() => {
-            setCardType(index, "text");
+            setCardType(index, "Text");
           }}>text_format</Button>
           <Button className='empty-content-button' icon onClick={() => {
                     setCardType(index, "image");

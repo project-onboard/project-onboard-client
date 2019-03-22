@@ -127,9 +127,10 @@ export default class CourseView extends PureComponent {
                         hoverKey: this.state.hoverKey,
                         page: item.primaryText,
                         renderNode: this.state.renderNode,
-                        modules: this.state.modules,
+                        modules: modules,
                         currentSection: item.sectionindex,
-                        currentModule: item.moduleindex
+                        currentModule: item.moduleindex,
+                        currentContents: modules[item.moduleindex].sections[item.sectionindex].contents,
                     }),
                 onMouseOver: () =>
                     this.setState({
@@ -188,9 +189,12 @@ export default class CourseView extends PureComponent {
         >
 
           <div className="course-section-container">
-            <ContentsContainer  saveSectionContents= { this.saveSectionContents} page={page}
+            <ContentsContainer  page={page}
                                 isEditing = {this.state.isEditing}
                                 getCurrentContents = {this.getCurrentContents}
+                                contents = {this.state.currentContents}
+                                sectionIndex = {this.state.currentSection}
+                                moduleIndex = {this.state.currentModule}
             />
           </div>
 
