@@ -27,6 +27,7 @@
 
 /* Fonts */
 .course-list-title,
+.course-list-username,
 .course-selection-list-item .md-text {
     font-family: Roboto;
     font-style: normal;
@@ -37,4 +38,8 @@
 
 .course-list-title {
     font-size: 33px;
+}
+
+.course-list-username {
+    font-size: 20px;   
 }

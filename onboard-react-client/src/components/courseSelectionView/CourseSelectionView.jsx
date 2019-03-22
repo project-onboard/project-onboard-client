@@ -5,9 +5,10 @@ import CoursesManager from './../../managers/coursesManager';
 import './courseselectionview.css'
 
 class CourseSelectionView extends PureComponent {
-  constructor({ match }) {
+  constructor({ username }) {
     super();
 
+    this.username = username
     this.state = {
       courses: []
     };
@@ -33,6 +34,9 @@ class CourseSelectionView extends PureComponent {
       <div className='big-container'>
         <div>
           <p className='course-list-title'>Courses List</p>
+
+          <p className='course-list-username'>Welcome, {this.username} !</p>
+
           <List className='course-selection-list'>{listItemJSX}</List>
         </div>
 

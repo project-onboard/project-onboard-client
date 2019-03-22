@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {useDropzone} from 'react-dropzone'
-import './uploadinput.css'
+import {useDropzone} from 'react-dropzone';
+import './uploadinput.css';
 
 const thumbsContainer = {
   display: 'flex',
