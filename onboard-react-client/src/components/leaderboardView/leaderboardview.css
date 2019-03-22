@@ -1,3 +1,8 @@
+.big-container {
+    width: 50%;
+    margin: auto;
+}
+
 .leaderboard-list-title {
     text-align: center;
     margin-top: 40px;
@@ -5,8 +10,6 @@
 
 .leaderboard-list {
     background: #3b4051;
-    width: 30%;
-    margin: auto;
 }
 
 .leaderboard-class {
@@ -22,6 +25,10 @@
     color: aliceblue;
 }
 
+.back-button {
+    width: 100%;
+}
+
 /* Fonts */
 .leaderboard-list-title,
 .leaderboard-list-item .md-text,
@@ -30,9 +37,9 @@
     font-style: normal;
     font-weight: 200;
     line-height: normal;
-    font-size: 16px;
+    font-size: 22px;
 }
 
 .leaderboard-list-title {
-    font-size: 30px;
+    font-size: 33px;
 }
