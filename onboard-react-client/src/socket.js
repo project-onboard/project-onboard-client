@@ -15,9 +15,14 @@ export default (function() {
     socket.emit('leaderboardPublisherFromSingleUser', data)
   }
 
+  function leaderboardPublisherClear() {
+    socket.emit('leaderboardPublisherClear')
+  }
+
   return {
     registerLeaderboardSubscriber,
     unregisterLeaderboardSubscriber,
-    emitLeaderboardFromPublisher
+    emitLeaderboardFromPublisher,
+    leaderboardPublisherClear
   }
 })()

@@ -9,8 +9,8 @@ import TaskContent from "../taskContent/TaskContent";
 import "./contentcard.css"
 
 export default class ContentCard extends PureComponent {
-    render() {
 
+    render() {
         return (
             <Paper className='content-card' key={0} zDepth={0} raiseOnHover={this.props.isEditing}>
                 {this.props.isEditing? (
@@ -33,7 +33,7 @@ export default class ContentCard extends PureComponent {
                 {(this.props.type == "video") ? <VideoContent
                     isEditing={this.props.isEditing}/> : null}
                  {(this.props.type == "task") ? <TaskContent
-                    isEditing={this.props.isEditing}/> : null}
+                    isEditing={this.props.isEditing} username={this.props.username}/> : null}
             </Paper>
         );
     }

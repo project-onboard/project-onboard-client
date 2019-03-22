@@ -79,6 +79,7 @@ export default class ContentsContainer extends PureComponent {
                                  text={card.text}
                                  setCardType={this.setCardType}
                                  isEditing={this.props.isEditing}
+                                 username={this.props.username}
                                  deleteContent={this.deleteContent}
                                  updateContentChange = {(content) => {
                                      this.updateContentChange(index, content)

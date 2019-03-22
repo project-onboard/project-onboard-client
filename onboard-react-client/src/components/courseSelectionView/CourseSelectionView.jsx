@@ -35,7 +35,7 @@ class CourseSelectionView extends PureComponent {
         <div>
           <p className='course-list-title'>Courses List</p>
 
-          <p className='course-list-username'>Welcome, {this.username} !</p>
+          <p className='course-list-username'>Welcome, {this.username}!</p>
 
           <List className='course-selection-list'>{listItemJSX}</List>
         </div>
