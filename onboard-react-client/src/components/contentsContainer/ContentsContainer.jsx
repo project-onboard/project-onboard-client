@@ -25,8 +25,6 @@ export default class ContentsContainer extends PureComponent {
                 currentModule: props.moduleIndex,
                 currentSection: props.sectionIndex,
             }));
-            console.log("Yawei");
-            console.log(this.props.contents);
         }
     }
 
@@ -39,32 +37,37 @@ export default class ContentsContainer extends PureComponent {
     };
 
     setCardType = (newIndex, newType) => {
-        this.setState(state => {
-            const contents = state.contents.map(item => {
-                if (item.index == newIndex) {
+
+            const newContents = this.state.contents.map((item,index)  => {
+                if (index === newIndex) {
                     item.type = newType;
                 }
                 return item;
             });
-            return {
-                contents: contents
-            };
-        });
+
+            this.setState({contents:newContents});
+
     };
 
     deleteContent = index => {
-        this.setState(state => {
-            const contents = state.contents.filter(content => content.index !== index);
+        this.state.contents.splice(index, 1);
 
-            return {
-                contents,
-            };
-        });
+        const newContents = this.state.contents.map( item => { return item } )
+
+        let newState = {
+            contents: newContents
+        };
+
+
+        this.props.getCurrentContents(newState.contents);
+
+        this.setState( newState );
+
     };
 
-    updateContentChange = (index, newContent) => {
+    updateContentChange = (updateIndex, newContent) => {
         var newContents = this.state.contents;
-        newContents[index] = newContent;
+        newContents[updateIndex] = newContent;
         this.setState({
             contents: newContents
         });
@@ -74,9 +77,10 @@ export default class ContentsContainer extends PureComponent {
     render() {
         const cards = this.state.contents.map((card,index) => {
             return (<ContentCard type={card.type}
-                                 index={card.index}
+                                 index={index}
                                  title={card.title}
                                  text={card.text}
+                                 url={card.url}
                                  setCardType={this.setCardType}
                                  isEditing={this.props.isEditing}
                                  username={this.props.username}

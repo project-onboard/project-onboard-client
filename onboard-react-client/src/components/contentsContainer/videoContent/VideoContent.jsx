@@ -4,10 +4,11 @@ import './videocontent.css'
 
 export default class VideoContent extends PureComponent {
   state = {
-    url: 'jz10GvbC8bA'
+    url: ''
   };
 
   handleUrlChange = url => {
+    this.props.updateContentChange({url: url, type: "video"});
     this.setState({ url });
   };
 
@@ -21,7 +22,7 @@ export default class VideoContent extends PureComponent {
             id='url'
             placeholder='Enter a URL to a video here'
             onChange={this.handleUrlChange}
-            value={this.state.url}
+            value={this.props.url}
           />
         </div>
       );
@@ -33,7 +34,7 @@ export default class VideoContent extends PureComponent {
           frameborder='0'
           allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
           allowfullscreen
-          src={"https://www.youtube.com/embed/" + this.state.url}
+          src={"https://www.youtube.com/embed/" + this.props.url}
         />
       );
     }
