@@ -1,7 +1,12 @@
 .empty-content-container {
-    padding-top:50px;
     height: 200px;
-    vertical-align: bottom;
+}
+
+.empty-content-buttons-flexbox {
+    display: flex;
+    height: inherit;
+    align-items: center;
+    justify-content: center;
 }
 
 .empty-content-button {
